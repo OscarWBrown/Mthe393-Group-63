@@ -46,7 +46,8 @@ blackBox('save_Callback',handles.save,[],handles);
 % blackBox('run_Callback',handles.run,[],handles);
 
 % creates 50 evenly spaced points in the interval [10^-4, 10^4]
-in = linspace(power(10, -4), power(10, 4), 50);		
+in = linspace(power(10, -4), power(10, 4), 50);	
+% creates a 1x50 array of zeroes to store results
 out = zeros([1, length(in)]);						
 
 for i = 1:length(in)
