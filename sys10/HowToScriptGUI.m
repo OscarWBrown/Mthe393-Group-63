@@ -47,7 +47,7 @@ blackBox('save_Callback',handles.save,[],handles);
 
 % creates 50 evenly spaced points in the interval [10^-4, 10^4]
 in = linspace(power(10, -4), power(10, 4), 50);		
-out = zeros([1, length(in)]);						%what does zeros do?
+out = zeros([1, length(in)]);						
 
 for i = 1:length(in)
 	% k is assigned the next value in the input list
