@@ -23,32 +23,31 @@ set(handles.radioField, 'Value', 1);
 % This will let you pick the File radio button
 % set(handles.radioFile, 'Value', 1);
 % This changes the input file name textbox
-% set(handles.inputFile, 'String', 'input_file_name' );
+set(handles.inputFile, 'String', 'input_file_name' );
 	
 	
-endTime = '10';
 % This changes the start time
-set(handles.axisStart, 'String', '0');
+% set(handles.axisStart, 'String', '0');
 % This changes the end time
-set(handles.axisEnd, 'String', 'endTime');
+% set(handles.axisEnd, 'String', 'endTime');
 % This changes the step size
-set(handles.stepSize, 'String', '0.01');
+% set(handles.stepSize, 'String', '0.01');
 % This changes the refine output
-set(handles.refineOutput, 'String', '1');	
+% set(handles.refineOutput, 'String', '1');	
 
 % This changes the save file name
-set(handles.saveFile, 'String', 'saving_file_name' );
+% set(handles.saveFile, 'String', 'saving_file_name' );
 % Use the save button
-blackBox('save_Callback',handles.save,[],handles);
+% blackBox('save_Callback', handles.save, [], handles);
 % Use the clear button
 % blackBox('clear_Callback',handles.save,[],handles);
 % Use the run button
 % blackBox('run_Callback',handles.run,[],handles);
 
 % creates 50 evenly spaced points in the interval [10^-4, 10^4]
-in = linspace(power(10, -4), power(10, 4), 50);	
-% creates a 1x50 array of zeroes to store results
-out = zeros([1, length(in)]);						
+in = linspace(power(10, 1), power(10, 2), 10);		
+
+endTime = 10;
 
 for i = 1:length(in)
 	% k is assigned the next value in the input list
@@ -59,9 +58,18 @@ for i = 1:length(in)
 	set(handles.input, 'String', name);
 
     % set all other fields of the GUI
+    set(handles.axisStart, 'String', '0');
+    set(handles.axisEnd, 'String', endTime);
+    set(handles.stepSize, 'String', '0.001');
+    set(handles.refineOutput, 'String', '10');
 
-    blackBox('input_Callback',handles.input,[],handles);
-    % blackBox('run_Callback',handles.run,[],handles);
+    endTime = 8*pi/k;
+    str = sprintf('endTime%d', k);
+    blackBox('input_Callback', handles.input, [], handles);
+    blackBox('run_Callback',handles.run,[],handles);
+    blackBox('save_Callback', handles.save, [], handles);
+    set(handles.saveFile, 'String', str);
+
 end
 
 
@@ -77,3 +85,4 @@ end
 
 %=======================Do Not Edit========================================
 set(0,'showHiddenHandles',temp);
+
