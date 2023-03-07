@@ -49,7 +49,7 @@
 [siner149, siner249, siner349] = sineSolve(endTime49);
 % [siner150, siner250, siner350] = sineSolve(endTime50);
 
-siner2 = [siner21 siner22 siner23 siner24 siner25 siner26 siner27 siner28 siner29 siner210 siner211 siner212 siner213 siner214 siner215 siner216 siner217 siner218 siner219 siner220 siner221 siner222 siner223 siner224 siner225 siner226 siner227 siner228 siner229 siner230 siner231 siner232 siner233 siner234 siner235 siner236 siner237 siner238 siner239 siner240 siner241 siner242 siner243 siner244 siner245 siner246 siner247 siner248 siner249]
+siner2 = [siner21 siner22 siner23 siner24 siner25 siner26 siner27 siner28 siner29 siner210 siner211 siner212 siner213 siner214 siner215 siner216 siner217 siner218 siner219 siner220 siner221 siner222 siner223 siner224 siner225 siner226 siner227 siner228 siner229 siner230 siner231 siner232 siner233 siner234 siner235 siner236 siner237 siner238 siner239 siner240 siner241 siner242 siner243 siner244 siner245 siner246 siner247 siner248 siner249];
 siner3 = [siner31 siner32 siner33 siner34 siner35 siner36 siner37 siner38 siner39 siner310 siner311 siner312 siner313 siner314 siner315 siner316 siner317 siner318 siner319 siner320 siner321 siner322 siner323 siner324 siner325 siner326 siner327 siner328 siner329 siner330 siner331  siner332 siner333 siner334 siner335 siner336 siner337 siner338 siner339 siner340 siner341 siner342 siner343 siner344 siner345 siner346 siner347 siner348 siner349];
 
 g = logspace(0, 2.5, 50);
