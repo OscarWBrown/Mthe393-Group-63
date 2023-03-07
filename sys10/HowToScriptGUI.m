@@ -45,7 +45,7 @@ set(handles.inputFile, 'String', 'input_file_name' );
 % blackBox('run_Callback',handles.run,[],handles);
 
 % creates 50 evenly spaced points in the interval [10^-4, 10^4]
-in = linspace(power(10, 1), power(10, 2), 10);		
+in = logspace(0, 2.5, 50);		
 
 endTime = 10;
 
@@ -60,17 +60,19 @@ for i = 1:length(in)
     % set all other fields of the GUI
     set(handles.axisStart, 'String', '0');
     set(handles.axisEnd, 'String', endTime);
-    set(handles.stepSize, 'String', '0.001');
-    set(handles.refineOutput, 'String', '10');
-
+    set(handles.stepSize, 'String', string(0.05*1/k));
+    set(handles.refineOutput, 'String', '1');
+    
     endTime = 8*pi/k;
-    str = sprintf('endTime%d', k);
+    str = sprintf('endTime%d', i);
     blackBox('input_Callback', handles.input, [], handles);
     blackBox('run_Callback',handles.run,[],handles);
     blackBox('save_Callback', handles.save, [], handles);
     set(handles.saveFile, 'String', str);
 
 end
+
+
 
 
 % When you go to run the GUI, there is still a bug in the program.
@@ -85,4 +87,3 @@ end
 
 %=======================Do Not Edit========================================
 set(0,'showHiddenHandles',temp);
-
