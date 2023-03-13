@@ -36,7 +36,7 @@ set(handles.inputFile, 'String', 'input_file_name' );
 % set(handles.refineOutput, 'String', '1');	
 
 % This changes the save file name
-% set(handles.saveFile, 'String', 'saving_file_name' );
+% set(handles.saveFile,k 'String', 'saving_file_name' );
 % Use the save button
 % blackBox('save_Callback', handles.save, [], handles);
 % Use the clear button
@@ -45,9 +45,8 @@ set(handles.inputFile, 'String', 'input_file_name' );
 % blackBox('run_Callback',handles.run,[],handles);
 
 % creates 50 evenly spaced points in the interval [10^-4, 10^4]
-in = logspace(0, 2.5, 50);		
+in = logspace(-4, 4, 25);		
 
-endTime = 10;
 
 for i = 1:length(in)
 	% k is assigned the next value in the input list
@@ -56,22 +55,21 @@ for i = 1:length(in)
 	name = sprintf('sin(%f*t)', k);
 	% gives the equation to the GUI
 	set(handles.input, 'String', name);
-
+    
+    endTime = 12*pi/k;
     % set all other fields of the GUI
     set(handles.axisStart, 'String', '0');
     set(handles.axisEnd, 'String', endTime);
-    set(handles.stepSize, 'String', string(0.05*1/k));
-    set(handles.refineOutput, 'String', '1');
+    set(handles.stepSize, 'String', string(0.05/k));
+    set(handles.refineOutput, 'String', '1');   
     
-    endTime = 8*pi/k;
+
     str = sprintf('endTime%d', i);
     blackBox('input_Callback', handles.input, [], handles);
     blackBox('run_Callback',handles.run,[],handles);
     blackBox('save_Callback', handles.save, [], handles);
     set(handles.saveFile, 'String', str);
-
 end
-
 
 
 
