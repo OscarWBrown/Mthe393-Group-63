@@ -75,8 +75,26 @@ function [period, phaseShift, amplitude] = sineSolve(endTime, index)
             break
         end
     end 
+    total = 0;
+    periodCount = 0;
+    pointsSkipped = 0;
+    for i = 1:length(in) 
+        pre = i - 1;
+        cur = i;
+        nex = i + 1;        
+        if ((endTime.output(pre) < endTime.output(cur)) && (endTime.output(cur) > endTime.output(nex)))
+            periodCount = periodCount + 1;
+            if periodCount >= 4
+                if periodCount == 4
+                    pointsSkipped = cur;
+                end
+                total = total + cur.endTime.output.time(cur);
+            end 
+        end
+    end
+
     period = 0;
     phaseShift = avg;
-    amplitude = max(y(ceil(160*pi):length(y)));
+    amplitude = total/(length(in) - pointsSkipped);
     
 end
